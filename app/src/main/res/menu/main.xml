@@ -33,4 +33,9 @@
         android:orderInCategory="1"
         android:title="@string/action_topRated"
         />
+    <item
+        android:id="@+id/action_favMovie"
+        android:orderInCategory="1"
+        android:title="@string/action_favMovie"
+        />
 </menu>

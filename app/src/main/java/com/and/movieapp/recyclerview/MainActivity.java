@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.and.movieapp.model.MovieDto;
 import com.and.movieapp.util.JsonUtils;
 
@@ -59,6 +58,13 @@ public class MainActivity extends AppCompatActivity
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+    }
+
+    @Override
+    protected void onResume () {
+        super.onResume();
 
     }
 
@@ -112,6 +118,13 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
 
+            case R.id.action_favMovie:
+                try {
+                    launchFavActivity();
+                }     catch (Exception e){
+                    e.printStackTrace();
+                }
+
 
         }
 
@@ -157,11 +170,11 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-
+    private void launchFavActivity() {
+        Intent intent = new Intent(this, FavActivity.class);
+        startActivity(intent);
+    }
     public class MovieAPIUtil {
-
-
-
 
         public List<MovieDto> callMovieSearch( String flag) throws Exception {
 
@@ -230,6 +243,7 @@ public class MainActivity extends AppCompatActivity
         mAdapter = new MovieAdapter(NUM_LIST_ITEMS, this,lstMovieDto);
         mMovie.setAdapter(mAdapter);
     }
+
 
 
 }

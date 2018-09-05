@@ -1,12 +1,16 @@
 package com.and.movieapp.util;
 
 import com.and.movieapp.model.MovieDto;
+import com.and.movieapp.model.TrailerDto;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JsonUtils {
 
@@ -25,6 +29,13 @@ public class JsonUtils {
     private static String ID = "id";
     private static String ADULT = "adult";
     private static String VOTE_COUNT = "vote_count";
+    private static String KEY = "key";
+    private static String NAME = "name";
+    private static String SITE = "site";
+    private static String SIZE = "size";
+    private static String TYPE = "type";
+    private static String AUTHOR = "author";
+    private static String REVIEW = "content";
 
 
     public static List<MovieDto> parseApiResponseJson(String json) {
@@ -88,5 +99,68 @@ public class JsonUtils {
         return objMovieDto;
     }
 
+    public static List<TrailerDto> parseApiResTrailerJson(String json) {
+
+        JSONObject jsonObject;
+        List<TrailerDto> lstTrailerDto = new ArrayList<>();
+        String strMovieID;
+        try {
+            jsonObject = new JSONObject(json);
+            if( jsonObject != null && jsonObject.length() > 0) {
+
+                strMovieID = jsonObject.getString(ID);
+
+                if (jsonObject.has(RESULT)) {
+
+                    JSONArray jsonArray = (JSONArray) jsonObject.get(RESULT);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        TrailerDto objTrailerDto = new TrailerDto();
+                        objTrailerDto.setMovieId(strMovieID);
+                        objTrailerDto.setTrailerId( jsonArray.getJSONObject(i).getString(ID));
+                        objTrailerDto.setKey( jsonArray.getJSONObject(i).getString(KEY));
+                        objTrailerDto.setName( jsonArray.getJSONObject(i).getString(NAME));
+                        objTrailerDto.setSite( jsonArray.getJSONObject(i).getString(SITE));
+                        objTrailerDto.setSize( jsonArray.getJSONObject(i).getString(SIZE));
+                        objTrailerDto.setTeaser( jsonArray.getJSONObject(i).getString(TYPE));
+                        lstTrailerDto.add(objTrailerDto);
+                    }
+                }
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return lstTrailerDto;
+
+    }
+
+
+
+    public static Map<String, String> parseApiRestReviewJson(String json) {
+
+        JSONObject jsonObject;
+        Map<String, String> mapReview = new HashMap<>();
+
+        try {
+            jsonObject = new JSONObject(json);
+            if( jsonObject != null && jsonObject.length() > 0) {
+
+                if (jsonObject.has(RESULT)) {
+
+                    JSONArray jsonArray = (JSONArray) jsonObject.get(RESULT);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        mapReview.put(jsonArray.getJSONObject(i).getString(AUTHOR), jsonArray.getJSONObject(i).getString(REVIEW));
+                    }
+                }
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return mapReview;
+
+    }
 
 }

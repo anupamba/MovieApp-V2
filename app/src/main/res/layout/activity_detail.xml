@@ -1,29 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/colorAccent  ">
 
     <!-- image_iv -->
-    <ImageView
-        android:id="@+id/poster_path_img"
+        <ImageView
+            android:id="@+id/poster_path_img"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/poster_path"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tv_movieName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            tools:text="MovieName" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/add2fav"
+        android:textStyle="bold"
+        tools:text="Add To Favorite" />
+
+    <ImageButton
+        android:id="@+id/btnAdd2Fav"
+        android:layout_width="78dp"
+        android:layout_height="42dp"
+        android:layout_gravity="start"
+        android:contentDescription="@string/add2fav"
+        android:text="@string/add2fav"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/trailer"
+        android:textStyle="bold"
+        tools:text="Watch Trailer's" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/poster_path"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:paddingEnd="8dp"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingRight="8dp"
+            android:text="@string/trailer1"
+            tools:text="Trailer 1" />
+
+        <ImageButton
+            android:id="@+id/btnTrailer1"
+            android:layout_width="80dp"
+            android:layout_height="63dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:contentDescription="@string/trailer"
+            android:paddingHorizontal="50dp"
+            app:srcCompat="@android:drawable/ic_media_play"
+            tools:targetApi="o" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingRight="8dp"
+            android:text="@string/trailer2"
+            tools:text="Trailer 2" />
+
+        <ImageButton
+            android:id="@+id/btnTrailer2"
+            android:layout_width="80dp"
+            android:layout_height="63dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:contentDescription="@string/trailer"
+            android:paddingHorizontal="30dp"
+            app:srcCompat="@android:drawable/ic_media_play"
+            tools:targetApi="o" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingRight="8dp"
+            android:text="@string/trailer3"
+            tools:text="Trailer 3" />
+
+        <ImageButton
+            android:id="@+id/btnTrailer3"
+            android:layout_width="80dp"
+            android:layout_height="63dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:contentDescription="@string/trailer"
+            android:paddingHorizontal="30dp"
+            android:paddingLeft="8dp"
+            app:srcCompat="@android:drawable/ic_media_play"
+            tools:targetApi="o" />
+
+    </LinearLayout>
 
     <!-- title -->
+
+
+    <Button
+        android:id="@+id/btnReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Movie Review's" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textStyle="bold" />
+
     <TextView
         android:id="@+id/title_tv"
         android:layout_width="wrap_content"
